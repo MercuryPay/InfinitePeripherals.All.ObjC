@@ -1,6 +1,6 @@
 Infinite Peripherals
 ===================
-XCode iOS application capturing encrypted credit card swipe from MagTek peripheral and processing transactions to our web services platform.
+XCode iOS application capturing encrypted credit card swipe from Infinite Peripheral and processing transactions to the MercuyPay web services platform.
 
 > In order to Build and Run you **must** connect an iOS device to dubug. Build will fail with iOS Simulator 
 
