@@ -10,12 +10,14 @@ XCode iOS application capturing encrypted credit card swipe from Infinite Periph
 Add DTDevices.h and libtdev.a to your project
 
 ##Step 2: Modify plist file
+
+```
 <key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string>com.datecs.linea.pro.msr</string>
 		<string>com.datecs.linea.pro.bar</string>
 	</array>
-
+```
 
 ##Step 3: Initilize a new *dtdev* instance
 
