@@ -1,4 +1,4 @@
-Infinite Peripherals Infinea Tab and Linea Pro
+Infinite Peripherals
 ===================
 XCode iOS application capturing encrypted credit card swipe from MagTek peripheral and processing transactions to our web services platform.
 
