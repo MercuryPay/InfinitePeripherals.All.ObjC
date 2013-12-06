@@ -24,121 +24,152 @@ Add `DTDevices.h` and `libtdev.a` to your project
 ###Step 3: Initilize a new `dtdev` instance
 
 ```
- self.dtdev = [DTDevices sharedDevice];
-    [self.dtdev addDelegate:self];
-    [self.dtdev connect];
+self.dtdev = [DTDevices sharedDevice];
+[self.dtdev addDelegate:self];
+[self.dtdev connect];
 ```
 
-###Step 4: Register to Infinite Peripheral notification center events
+###Step 4: Implement updateConnectionState:(int)state method
 
 ```
-NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-[nc addObserver:self selector:@selector(trackDataReady:) name:@"trackDataReadyNotification" object:nil];
-[nc addObserver:self selector:@selector(devConnStatusChange) name:@"devConnectionNotification" object:nil];
-```
-
-###Step 5: On `trackDataReadyNotification` event store the Track2 and KSN
-
-```
-- (void)trackDataReady:(NSNotification *)notification
-{
-    NSNumber *status = [[notification userInfo] valueForKey:@"status"];
+- (void)updateConnectionState:(int)state {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterLongStyle];
     
-    [self performSelectorOnMainThread:@selector(onDataEvent:)
-                           withObject:status
-                        waitUntilDone:NO];
+        switch (state) {
+                case CONN_DISCONNECTED:
+                case CONN_CONNECTING:
+            		self.lblDeviceState.text = @"(x) - device not connected";
+            		break;
+                case CONN_CONNECTED:
+        	{
+            		//set the active encryption algorithm - Mercury, using DUKPT key 1
+            		NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:KEY_EH_DUKPT_MASTER1],@"keyID", nil];
+            		[self.dtdev emsrSetEncryption:ALG_EH_MAGTEK params:params error:nil];
+                        break;
+        	}
+        }
 }
+```
 
-- (void)onDataEvent:(id)status
-{
-    switch ([status intValue]) {
-        case TRANS_STATUS_OK:
-            NSLog(@"TRANS_STATUS_OK");
-            self.encryptedSwipeData = [[EncryptedSwipeData alloc] init];
-            self.encryptedSwipeData.track1Masked = self.magTek.getTrack1Masked;
-            self.encryptedSwipeData.track2Masked = self.magTek.getTrack2Masked;
-            self.encryptedSwipeData.track1Encrypted = self.magTek.getTrack1;
-            self.encryptedSwipeData.track2Encrypted = self.magTek.getTrack2;
-            self.encryptedSwipeData.ksn = self.magTek.getKSN;
+###Step 5: Implement magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3
+
+```
+//notification when card is read
+- (void)magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3 {
+    NSMutableString *status=[NSMutableString string];
+    
+    self.txtRequestBox.text = @"";
+    self.txtResponseBox.text = @"";
+    
+    if(tracks!=0)
+    {
+        //you can check here which tracks are read and discard the data if the requred ones are missing
+        // for example:
+        
+        if(!(tracks&2)) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Bad Swipe"
+                                                           message: @"No Track2 Data Read"
+                                                          delegate: self
+                                                 cancelButtonTitle: nil
+                                                 otherButtonTitles:@"OK",nil];
             
-            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            appDelegate.encryptedSwipeData = self.encryptedSwipeData;
+            [alert show];
             
-            break;
-        case TRANS_STATUS_ERROR:
-            NSLog(@"TRANS_STATUS_ERROR");
-            break;
-        default:
-            break;
+            return;
+        }
     }
-}
-
-```
-
-***
-##3 Step Process to Integrate to Mercury Web Services
-
-###Step 1: Build Request with Key Value Pairs
-  
-Create a NSMutableDictionary and add all the Key Value Pairs.
-  
-```
-    AppDelegate *ad = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSMutableDictionary *dictionaryReq = [NSMutableDictionary new];
-    [dictionaryReq setObject:@"118725340908147" forKey:@"MerchantID"];
-    [dictionaryReq setObject:@"Credit" forKey:@"TranType"];
-    [dictionaryReq setObject:@"Sale" forKey:@"TranCode"];
-    [dictionaryReq setObject:@"12345" forKey:@"InvoiceNo"];
-    [dictionaryReq setObject:@"12345" forKey:@"RefNo"];
-    [dictionaryReq setObject:@"MercuryHelper 1.0.1" forKey:@"Memo"];
-    [dictionaryReq setObject:@"Allow" forKey:@"PartialAuth"];
-    [dictionaryReq setObject:@"MagneSafe" forKey:@"EncryptedFormat"];
-    [dictionaryReq setObject:@"Swiped" forKey:@"AccountSource"];
-    
-    [dictionaryReq setObject:ad.encryptedSwipeData.track2Encrypted forKey:@"EncryptedBlock"];
-    [dictionaryReq setObject:ad.encryptedSwipeData.ksn forKey:@"EncryptedKey"];
-    
-    [dictionaryReq setObject:@"OneTime" forKey:@"Frequency"];
-    [dictionaryReq setObject:@"RecordNumberRequested" forKey:@"RecordNo"];
-    [dictionaryReq setObject:@"1.01" forKey:@"Purchase"];
-    [dictionaryReq setObject:@"test" forKey:@"Name"];
-    [dictionaryReq setObject:@"MPS Terminal" forKey:@"TerminalName"];
-    [dictionaryReq setObject:@"MPS Shift" forKey:@"ShiftID"];
-    [dictionaryReq setObject:@"test" forKey:@"OperatorID"];
-    [dictionaryReq setObject:@"4 Corporate SQ" forKey:@"Address"];
-    [dictionaryReq setObject:@"30329" forKey:@"Zip"];
-    [dictionaryReq setObject:@"123" forKey:@"CVV"];
-```
-  
-###Step 2: Process the Transaction
-
-Create MercuryHelper object and call the transctionFromDictionary method with the NSMutalbeDictionary and merchant's password.
-
-```
-    MercuryHelper *mgh = [MercuryHelper new];
-    mgh.delegate = self;
-    [mgh transctionFromDictionary:dictionaryReq andPassword:@"xyz"];
-```
-
-###Step 3: Parse the Response
-
-Parse the Response using in the transactionDidFinish delegate.
-
-Approved transactions will have a CmdStatus equal to "Approved".
-
-```
--(void) transactionDidFinish:(NSDictionary *)result {
-    
-    if ([result objectForKey:@"CmdStatus"]
-      && [[result objectForKey:@"CmdStatus"] isEqualToString:@"Approved"]) {
-      
-      // Approved logic here
-      
-    } else {
-      
-      // Declined logic here
-      
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Bad Swipe"
+                                                       message: @"No Track Data Read"
+                                                      delegate: self
+                                             cancelButtonTitle: nil
+                                             otherButtonTitles:@"OK",nil];
+        
+        [alert show];
+        
+        return;
+    }
+        
+    if(encryption==ALG_EH_MAGTEK)
+    {
+        //find the tracks, turn to ascii hex the data
+        int index=0;
+        uint8_t *bytes=(uint8_t *)[data bytes];
+        
+        index++; //card encoding typeB
+        index++; //track status
+        int t1Len=bytes[index++]; //track 1 unencrypted length
+        int t2Len=bytes[index++]; //track 2 unencrypted length
+        int t3Len=bytes[index++]; //track 3 unencrypted length
+        NSString *t1masked=[[NSString alloc] initWithBytes:&bytes[index] length:t1Len encoding:NSASCIIStringEncoding];
+        index+=t1Len; //track 1 masked
+        NSString *t2masked=[[NSString alloc] initWithBytes:&bytes[index] length:t2Len encoding:NSASCIIStringEncoding];
+        index+=t2Len; //track 2 masked
+        NSString *t3masked=[[NSString alloc] initWithBytes:&bytes[index] length:t3Len encoding:NSASCIIStringEncoding];
+        index+=t3Len; //track 3 masked
+        uint8_t *t1Encrypted=&bytes[index]; //encrypted track 1
+        int t1EncLen=((t1Len+7)/8)*8; //calculated encrypted track length as unencrypted one padded to 8 bytes
+        index+=t1EncLen;
+        uint8_t *t2Encrypted=&bytes[index]; //encrypted track 2
+        int t2EncLen=((t2Len+7)/8)*8; //calculated encrypted track length as unencrypted one padded to 8 bytes
+        index+=t2EncLen;
+        
+        index+=20; //track1 sha1
+        index+=20; //track2 sha1
+        uint8_t *ksn=&bytes[index]; //dukpt serial number
+        
+        [status appendFormat:@"MAGTEK card format\n"];
+        [status appendFormat:@"Track1: %@\n",t1masked];
+        [status appendFormat:@"Track2: %@\n",t2masked];
+        [status appendFormat:@"Track3: %@\n",t3masked];
+        
+        if(t2Len>0) {
+            
+            if ([self.dtdev msProcessFinancialCard:t1masked track2:t2masked]) {
+                //if the card is a financial card, try sending to a processor for verification
+                NSMutableDictionary *dictionaryReq = [NSMutableDictionary new];
+                [dictionaryReq setObject:@"118725340908147" forKey:@"MerchantID"];
+                [dictionaryReq setObject:@"Credit" forKey:@"TranType"];
+                [dictionaryReq setObject:@"Sale" forKey:@"TranCode"];
+                [dictionaryReq setObject:@"54322" forKey:@"InvoiceNo"];
+                [dictionaryReq setObject:@"54322" forKey:@"RefNo"];
+                [dictionaryReq setObject:@"Mercury InfinitePeripherals TestApp v0.1" forKey:@"Memo"];
+                // EncryptedFormat is always set to MagneSafe
+                [dictionaryReq setObject:@"MagneSafe" forKey:@"EncryptedFormat"];
+                // AccountSource set to Swiped if read from MSR
+                [dictionaryReq setObject:@"Swiped" forKey:@"AccountSource"];
+                // EncryptedBlock is the encrypted payload in 3DES DUKPT format
+                [dictionaryReq setObject:[self toHexString:t2Encrypted length:t2EncLen space:false] forKey:@"EncryptedBlock"];
+                // EncryptedKey is the Key Serial Number (KSN)
+                [dictionaryReq setObject:[self toHexString:ksn length:10 space:false] forKey:@"EncryptedKey"];
+                [dictionaryReq setObject:@"4.35" forKey:@"Purchase"];
+                [dictionaryReq setObject:@"test" forKey:@"OperatorID"];
+                [dictionaryReq setObject:@"OneTime" forKey:@"Frequency"];
+                [dictionaryReq setObject:@"RecordNumberRequested" forKey:@"RecordNo"];
+                [dictionaryReq setObject:@"Allow" forKey:@"PartialAuth"];
+                
+                NSMutableString *message = [NSMutableString new];
+                
+                for (NSString *key in [dictionaryReq allKeys])
+                {
+                    [message appendFormat:@"%@: %@;\n", key, [dictionaryReq objectForKey:key]];
+                }
+                
+                self.txtRequestBox.text = message;
+                
+                MercuryHelper *mgh = [MercuryHelper new];
+                mgh.delegate = self;
+                mgh.platform = [NSMutableString stringWithString: self.lblPlatform.text];
+                [mgh transctionFromDictionary:dictionaryReq andPassword:@"xyz"];
+                
+                _isProcessingTransaction = YES;
+                self.activityIndicator.hidden = NO;
+                [self.activityIndicator startAnimating];
+            }
+        }
+        
     }
     
 }
