@@ -4,7 +4,7 @@ This is a sample Xcode iOS application demonstrating the capture of an encrypted
 ***
 **PLEASE NOTE:** In order to Build and Run you **must** be tethered to an iOS device to dubug. Build will fail with iOS Simulator 
 ***
-##Steps to Capture Secure Card Data from Infinite Peripherals Encrypted Swipers
+##Steps to Capture Secure Card Data from <br>Infinite Peripherals Encrypted Swipers
 
 ###Step 1: Add Infinite Peripheral library
 Add `DTDevices.h` and `libtdev.a` to your project
