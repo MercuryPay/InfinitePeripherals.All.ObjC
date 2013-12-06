@@ -2,14 +2,16 @@ Infinite Peripherals
 ===================
 XCode iOS application capturing encrypted credit card swipe from Infinite Peripheral and processing transactions to the MercuyPay web services platform.
 
-> In order to Build and Run you **must** be tethered to an iOS device to dubug. Build will fail with iOS Simulator 
+**PLEASE NOTE:** In order to Build and Run you **must** be tethered to an iOS device to dubug. Build will fail with iOS Simulator 
 
-#Steps to capture secure card data from Infinite Peripherals encrypted swipers
+##Steps to Capture Secure Card Data from Infinite Peripherals Encrypted Swipers
 
-##Step 1: Add Infinite Peripheral library
+###Step 1: Add Infinite Peripheral library
 Add `DTDevices.h` and `libtdev.a` to your project
 
-##Step 2: Modify plist file
+###Step 2: Modify plist file
+`com.datecs.linea.pro.msr`
+`com.datecs.linea.pro.bar`
 
 ```
 <key>UISupportedExternalAccessoryProtocols</key>
@@ -19,7 +21,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
 	</array>
 ```
 
-##Step 3: Initilize a new *dtdev* instance
+###Step 3: Initilize a new **dtdev** instance
 
 ```
  self.dtdev = [DTDevices sharedDevice];
@@ -27,7 +29,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
     [self.dtdev connect];
 ```
 
-##Step 4: Register to Infinite Peripheral notification center events
+###Step 4: Register to Infinite Peripheral notification center events
 
 ```
 NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -35,7 +37,7 @@ NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 [nc addObserver:self selector:@selector(devConnStatusChange) name:@"devConnectionNotification" object:nil];
 ```
 
-##Step 5: On trackDataReadyNotification event store the Track2 and KSN
+###Step 5: On trackDataReadyNotification event store the Track2 and KSN
 
 ```
 - (void)trackDataReady:(NSNotification *)notification
@@ -73,9 +75,10 @@ NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
 ```
 
-#3 step process to integrate to Mercury Web Services.
+***
+##3 Step Process to Integrate to Mercury Web Services
 
-##Step 1: Build Request with Key Value Pairs
+###Step 1: Build Request with Key Value Pairs
   
 Create a NSMutableDictionary and add all the Key Value Pairs.
   
@@ -108,7 +111,7 @@ Create a NSMutableDictionary and add all the Key Value Pairs.
     [dictionaryReq setObject:@"123" forKey:@"CVV"];
 ```
   
-##Step 2: Process the Transaction
+###Step 2: Process the Transaction
 
 Create MercuryHelper object and call the transctionFromDictionary method with the NSMutalbeDictionary and merchant's password.
 
@@ -118,7 +121,7 @@ Create MercuryHelper object and call the transctionFromDictionary method with th
     [mgh transctionFromDictionary:dictionaryReq andPassword:@"xyz"];
 ```
 
-##Step 3: Parse the Response
+###Step 3: Parse the Response
 
 Parse the Response using in the transactionDidFinish delegate.
 
@@ -141,7 +144,6 @@ Approved transactions will have a CmdStatus equal to "Approved".
 }
 ```
 
-###©2013 Mercury Payment Systems, LLC - all rights reserved.
-
-Disclaimer:
+######©2013 Mercury Payment Systems, LLC - all rights reserved.
+***
 This software and all specifications and documentation contained herein or provided to you hereunder (the "Software") are provided free of charge strictly on an "AS IS" basis. No representations or warranties are expressed or implied, including, but not limited to, warranties of suitability, quality, merchantability, or fitness for a particular purpose (irrespective of any course of dealing, custom or usage of trade), and all such warranties are expressly and specifically disclaimed. Mercury Payment Systems shall have no liability or responsibility to you nor any other person or entity with respect to any liability, loss, or damage, including lost profits whether foreseeable or not, or other obligation for any cause whatsoever, caused or alleged to be caused directly or indirectly by the Software. Use of the Software signifies agreement with this disclaimer notice.
