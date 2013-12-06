@@ -2,12 +2,12 @@ Infinite Peripherals
 ===================
 XCode iOS application capturing encrypted credit card swipe from Infinite Peripheral and processing transactions to the MercuyPay web services platform.
 
-> In order to Build and Run you **must** connect an iOS device to dubug. Build will fail with iOS Simulator 
+> In order to Build and Run you **must** be tethered with an iOS device to dubug. Build will fail with iOS Simulator 
 
 #Steps to capture secure card data from Infinite Peripherals encrypted swipers
 
 ##Step 1: Add Infinite Peripheral library
-Add DTDevices.h and libtdev.a to your project
+Add `DTDevices.h` and `libtdev.a` to your project
 
 ##Step 2: Modify plist file
 
