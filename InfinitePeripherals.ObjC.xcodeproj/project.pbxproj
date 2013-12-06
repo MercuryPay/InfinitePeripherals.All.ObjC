@@ -453,7 +453,7 @@
 				INFOPLIST_FILE = "InfinitePeripherals.ObjC/InfinitePeripherals.ObjC-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/devIntegrations/Dropbox/Personal/MPS/InfinitePeripherals.ObjC/InfinitePeripherals.ObjC/InfinitePeripherals,
+					"$(SRCROOT)/InfinitePeripherals.ObjC/InfinitePeripherals",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -470,7 +470,7 @@
 				INFOPLIST_FILE = "InfinitePeripherals.ObjC/InfinitePeripherals.ObjC-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/devIntegrations/Dropbox/Personal/MPS/InfinitePeripherals.ObjC/InfinitePeripherals.ObjC/InfinitePeripherals,
+					"$(SRCROOT)/InfinitePeripherals.ObjC/InfinitePeripherals",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -538,6 +538,7 @@
 				33D85FAB18511DF000934F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33D85FAC18511DF000934F7C /* Build configuration list for PBXNativeTarget "InfinitePeripherals.ObjCTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +547,7 @@
 				33D85FAE18511DF000934F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
