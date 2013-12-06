@@ -1,9 +1,9 @@
 Infinite Peripherals
 ===================
 XCode iOS application capturing encrypted credit card swipe from Infinite Peripheral and processing transactions to the MercuyPay web services platform.
-
+***
 **PLEASE NOTE:** In order to Build and Run you **must** be tethered to an iOS device to dubug. Build will fail with iOS Simulator 
-
+***
 ##Steps to Capture Secure Card Data from Infinite Peripherals Encrypted Swipers
 
 ###Step 1: Add Infinite Peripheral library
@@ -21,7 +21,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
 	</array>
 ```
 
-###Step 3: Initilize a new **dtdev** instance
+###Step 3: Initilize a new *dtdev* instance
 
 ```
  self.dtdev = [DTDevices sharedDevice];
@@ -37,7 +37,7 @@ NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 [nc addObserver:self selector:@selector(devConnStatusChange) name:@"devConnectionNotification" object:nil];
 ```
 
-###Step 5: On trackDataReadyNotification event store the Track2 and KSN
+###Step 5: On `trackDataReadyNotification` event store the Track2 and KSN
 
 ```
 - (void)trackDataReady:(NSNotification *)notification
@@ -143,7 +143,6 @@ Approved transactions will have a CmdStatus equal to "Approved".
     
 }
 ```
-
-######©2013 Mercury Payment Systems, LLC - all rights reserved.
-***
+----------------
+######© 2013 Mercury Payment Systems, LLC - all rights reserved.
 This software and all specifications and documentation contained herein or provided to you hereunder (the "Software") are provided free of charge strictly on an "AS IS" basis. No representations or warranties are expressed or implied, including, but not limited to, warranties of suitability, quality, merchantability, or fitness for a particular purpose (irrespective of any course of dealing, custom or usage of trade), and all such warranties are expressly and specifically disclaimed. Mercury Payment Systems shall have no liability or responsibility to you nor any other person or entity with respect to any liability, loss, or damage, including lost profits whether foreseeable or not, or other obligation for any cause whatsoever, caused or alleged to be caused directly or indirectly by the Software. Use of the Software signifies agreement with this disclaimer notice.
