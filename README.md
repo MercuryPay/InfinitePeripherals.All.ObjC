@@ -2,7 +2,7 @@ Infinite Peripherals
 ===================
 This is a sample Xcode iOS application demonstrating the capture of an encrypted credit card swipe from Infinite Peripheral device and processing transactions to the MercuyPay Web Services platform.
 ***
-**PLEASE NOTE:** 
+**PLEASE NOTE:** Infinite Peripherals has a developer portal at http://ipcprint.com/developer/  There is an NDA registration procedure in place as a part of the Development Portal Registration Process.  Once approved, you will have access to SDKs.  
 ***
 ##Steps to Capture Secure Card Data from <br>Infinite Peripherals Encrypted Swipers
 
