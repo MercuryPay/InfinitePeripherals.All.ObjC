@@ -6,7 +6,7 @@ This is a sample Xcode iOS application demonstrating the capture of an encrypted
 ***
 ##Steps to Capture Secure Card Data from <br>Infinite Peripherals Encrypted Swipers
 
-###Step 1: Add Infinite Peripheral library from Pre-requisite above
+###Step 1: Add Infinite Peripheral library from prerequisite above
 Add `DTDevices.h` and `libtdev.a` to your project
 
 ###Step 2: Modify .plist file
