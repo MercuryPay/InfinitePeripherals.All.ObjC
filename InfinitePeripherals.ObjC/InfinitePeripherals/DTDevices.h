@@ -784,6 +784,10 @@ typedef enum
      Voltage support
      */
     MSR_VOLTAGE=8,
+    /**
+     Emulated encrypted magnetic head, no undencrypted data leaves the head
+     */
+    MSR_ENCRYPTED_EMUL=16,
 }FEAT_MSRS;
 
 /**
@@ -3696,6 +3700,32 @@ typedef enum
  @return class containing pinpad information or nil if function failed
  **/
 -(DTPinpadInfo *)ppadGetSystemInfo:(NSError **)error;
+
+/**
+ Captures or releases keyboard.
+ <br>PinPad internally reads the keyboard to operate menus and such, if you want to be able to read keys, then you have to capture
+ it before that, and release after.
+ @param capture - capture the keyboard if TRUE, release if FALSE
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE if function succeeded, FALSE otherwise
+ **/
+-(BOOL)ppadKeyboardControl:(BOOL)capture error:(NSError **)error;
+
+/**
+ Reads key from the pinpad. Кеy codes are:
+ <table>
+ <tr><td>0x00</td><td>No key have been pressed</td></tr>
+ <tr><td>0x01/0x03</td><td>Numeric key have been pressed, but no numeric mode is enabled</td></tr>
+ <tr><td>'0'-'9'</td><td>Number keys 0-9, available only in numeric mode</td></tr>
+ <tr><td>'A'</td><td>Accept button have been pressed</td></tr>
+ <tr><td>'C'</td><td>Cancel button have been pressed</td></tr>
+ <tr><td>'a','b','c'</td><td>Functional buttons 1-3</td></tr>
+ </table>
+ @param key - stores key upon return
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE if function succeeded, FALSE otherwise
+ **/
+-(BOOL)ppadReadKey:(char *)key error:(NSError **)error;
 /**@}*/
 
 
@@ -5145,6 +5175,23 @@ typedef enum {
  This section includes the command used to start the transaction: ATR validation and application selection.
  @{
  */
+
+/**
+ This command initializes the emv kernel, call it before calling any other EMV function
+ @note Upon successful execution, EMV kernel status is stored in emvLastStatus property.
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE upon success, FALSE otherwise
+ **/
+-(BOOL)emvInitialise:(NSError **)error;
+
+/**
+ This command deinitializes the emv kernel and frees the allocated resources, call it after you are done with the EMV transaction
+ @note Upon successful execution, EMV kernel status is stored in emvLastStatus property.
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE upon success, FALSE otherwise
+ **/
+-(BOOL)emvDeinitialise:(NSError **)error;
+
 
 /**
  The command is in charge of validating the ATR sequence got from the card to ensure that is fully EMV compliant
