@@ -13,7 +13,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
 `com.datecs.linea.pro.msr`
 `com.datecs.linea.pro.bar`
 
-```
+```XML
 <key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string>com.datecs.linea.pro.msr</string>
@@ -23,7 +23,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
 
 ###Step 3: Initilize a new `dtdev` instance
 
-```
+```Objective-C
 self.dtdev = [DTDevices sharedDevice];
 [self.dtdev addDelegate:self];
 [self.dtdev connect];
@@ -31,7 +31,7 @@ self.dtdev = [DTDevices sharedDevice];
 
 ###Step 4: Implement updateConnectionState:(int)state method
 
-```
+```Objective-C
 - (void)updateConnectionState:(int)state {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterLongStyle];
@@ -54,7 +54,7 @@ self.dtdev = [DTDevices sharedDevice];
 
 ###Step 5: Implement magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3
 
-```
+```Objective-C
 //notification when card is read
 - (void)magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3 {
     NSMutableString *status=[NSMutableString string];
