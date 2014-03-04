@@ -45,6 +45,38 @@
     
 }
 
+-(void)updateBattery: (id)sender {
+    
+    NSError *error=nil;
+    
+    int percent;
+    float voltage;
+    
+	if([self.dtdev getBatteryCapacity:&percent voltage:&voltage error:&error])
+    {
+//        [self.batteryButton setTitle:[NSString stringWithFormat:@"%d%%,%.1fv",percent,voltage] forState:UIControlStateNormal];
+        [self.batteryButton setHidden:FALSE];
+        if(percent<0.1)
+            [self.batteryButton setBackgroundImage:[UIImage imageNamed:@"0.png"] forState:UIControlStateNormal];
+        else if(percent<40)
+            [self.batteryButton setBackgroundImage:[UIImage imageNamed:@"25.png"] forState:UIControlStateNormal];
+        else if(percent<60)
+            [self.batteryButton setBackgroundImage:[UIImage imageNamed:@"50.png"] forState:UIControlStateNormal];
+        else if(percent<80)
+            [self.batteryButton setBackgroundImage:[UIImage imageNamed:@"75.png"] forState:UIControlStateNormal];
+        else
+            [self.batteryButton setBackgroundImage:[UIImage imageNamed:@"100.png"] forState:UIControlStateNormal];
+    }else
+    {
+        [self.batteryButton setHidden:TRUE];
+    }
+}
+
+- (IBAction)onBattery:(id)sender {
+    
+    [self updateBattery:nil];
+}
+
 - (IBAction)sendMail:(id)sender {
     // From within your active view controller
     if([MFMailComposeViewController canSendMail]) {
@@ -69,6 +101,8 @@
         [self presentModalViewController:mailCont animated:YES];
     }
 }
+
+
 
 // Then implement the delegate method
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
@@ -95,6 +129,7 @@
 - (void)connectionState:(int)state {
     
     [self updateConnectionState:state];
+
 }
 
 //notification when card is read
@@ -248,6 +283,7 @@
 		case CONN_DISCONNECTED:
 		case CONN_CONNECTING:
             self.lblDeviceState.text = @"(x) - device not connected";
+            [self.batteryButton setHidden:true];
             break;
 		case CONN_CONNECTED:
         {
@@ -256,6 +292,8 @@
             //set the active encryption algorithm - MAGTEK, using DUKPT key 1
             NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:KEY_EH_DUKPT_MASTER1],@"keyID", nil];
             [self.dtdev emsrSetEncryption:ALG_EH_MAGTEK params:params error:nil];
+//            extern const uint8_t KEY_AES256_EMPTY[32];
+			[self updateBattery:nil];
 			break;
         }
 	}

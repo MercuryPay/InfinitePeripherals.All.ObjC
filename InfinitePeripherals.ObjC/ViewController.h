@@ -12,6 +12,9 @@
 
 @interface ViewController : UIViewController <MercuryHelperDelegate>
 
+// Battery State
+@property (strong, nonatomic) IBOutlet UIButton *batteryButton;
+
 //Infinite Peripherals
 @property (strong, nonatomic) DTDevices *dtdev;
 
@@ -38,5 +41,7 @@
 //Actions
 - (IBAction)changeOfPlatform:(id)sender;
 - (IBAction)sendMail:(id)sender;
+- (IBAction)onBattery:(id)sender;
+
 
 @end
