@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3395893418C65F15002EEB27 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3395893218C65EA8002EEB27 /* libdtdev.a */; };
 		33D85F7818511DF000934F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7718511DF000934F7C /* Foundation.framework */; };
 		33D85F7A18511DF000934F7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7918511DF000934F7C /* CoreGraphics.framework */; };
 		33D85F7C18511DF000934F7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7B18511DF000934F7C /* UIKit.framework */; };
@@ -30,7 +31,6 @@
 		33D85FC01851210A00934F7C /* requestText.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D85FBB1851210A00934F7C /* requestText.png */; };
 		33D85FC11851210A00934F7C /* responseText.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D85FBC1851210A00934F7C /* responseText.png */; };
 		33D85FC41851213500934F7C /* MercuryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D85FC31851213500934F7C /* MercuryHelper.m */; };
-		33D85FC51851336E00934F7C /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85FB11851203A00934F7C /* libdtdev.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3395893118C65EA0002EEB27 /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTDevices.h; path = InfinitePeripherals.ObjC/DTDevices.h; sourceTree = SOURCE_ROOT; };
+		3395893218C65EA8002EEB27 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdtdev.a; path = InfinitePeripherals.ObjC/libdtdev.a; sourceTree = SOURCE_ROOT; };
 		33D85F7418511DF000934F7C /* InfinitePeripherals.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePeripherals.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D85F7718511DF000934F7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33D85F7918511DF000934F7C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,8 +66,6 @@
 		33D85FA118511DF000934F7C /* InfinitePeripherals.ObjCTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InfinitePeripherals.ObjCTests-Info.plist"; sourceTree = "<group>"; };
 		33D85FA318511DF000934F7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		33D85FA518511DF000934F7C /* InfinitePeripherals_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfinitePeripherals_ObjCTests.m; sourceTree = "<group>"; };
-		33D85FB01851203A00934F7C /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
-		33D85FB11851203A00934F7C /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		33D85FB31851209600934F7C /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		33D85FB51851209D00934F7C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		33D85FB81851210A00934F7C /* logo@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x~ipad.png"; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D85FC51851336E00934F7C /* libdtdev.a in Frameworks */,
+				3395893418C65F15002EEB27 /* libdtdev.a in Frameworks */,
 				33D85FB61851209D00934F7C /* MessageUI.framework in Frameworks */,
 				33D85FB41851209600934F7C /* ExternalAccessory.framework in Frameworks */,
 				33D85F7A18511DF000934F7C /* CoreGraphics.framework in Frameworks */,
@@ -187,8 +187,8 @@
 		33D85FAF1851203A00934F7C /* InfinitePeripherals */ = {
 			isa = PBXGroup;
 			children = (
-				33D85FB01851203A00934F7C /* DTDevices.h */,
-				33D85FB11851203A00934F7C /* libdtdev.a */,
+				3395893218C65EA8002EEB27 /* libdtdev.a */,
+				3395893118C65EA0002EEB27 /* DTDevices.h */,
 			);
 			path = InfinitePeripherals;
 			sourceTree = "<group>";
@@ -454,6 +454,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/InfinitePeripherals.ObjC/InfinitePeripherals",
+					"/Users/devIntegrations/Desktop/DTDevices-iOS_2013-10-v1.Universal_XCode5/Library",
+					/Users/devIntegrations/Dropbox/Personal/MPS/InfinitePeriperals.ObjC/InfinitePeripherals.ObjC,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -471,6 +473,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/InfinitePeripherals.ObjC/InfinitePeripherals",
+					"/Users/devIntegrations/Desktop/DTDevices-iOS_2013-10-v1.Universal_XCode5/Library",
+					/Users/devIntegrations/Dropbox/Personal/MPS/InfinitePeriperals.ObjC/InfinitePeripherals.ObjC,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

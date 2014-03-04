@@ -173,6 +173,7 @@
                 //if the card is a financial card, try sending to a processor for verification
                 NSMutableDictionary *dictionaryReq = [NSMutableDictionary new];
                 [dictionaryReq setObject:@"118725340908147" forKey:@"MerchantID"];
+                [dictionaryReq setObject:@"02" forKey:@"LaneID"];
                 [dictionaryReq setObject:@"Credit" forKey:@"TranType"];
                 [dictionaryReq setObject:@"Sale" forKey:@"TranCode"];
                 [dictionaryReq setObject:@"54322" forKey:@"InvoiceNo"];
