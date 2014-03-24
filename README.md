@@ -181,4 +181,4 @@ This software and all specifications and documentation contained herein or provi
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a6cfcb5aa2c7f6e6d393cb5eee014cd3 "githalytics.com")](http://githalytics.com/MercuryPay/InfinitePeriperals.ObjC)
 
-[![Analytics](https://ga-beacon.appspot.com/UA-1785046-9/REST.ObjC/readme?pixel)](https://github.com/MercuryPay)
+[![Analytics](https://ga-beacon.appspot.com/UA-1785046-9/InfinitePeriperals.ObjC/readme?pixel)](https://github.com/MercuryPay)
