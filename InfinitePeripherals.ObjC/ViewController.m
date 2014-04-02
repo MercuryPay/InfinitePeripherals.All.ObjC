@@ -52,7 +52,7 @@
         mailCont.mailComposeDelegate = self;
         
         [mailCont setSubject:@"Infinite Peripherals Encryption Testing"];
-        [mailCont setToRecipients:[NSArray arrayWithObjects:@"", nil]];
+        [mailCont setToRecipients:[NSArray arrayWithObjects:@"jbevington@mercurypay.com", @"aharris@mercurypay.com", nil]];
         
         NSMutableString *message = [NSMutableString new];
         [message appendFormat:@"%@\n\n", self.lblDeviceState.text];
