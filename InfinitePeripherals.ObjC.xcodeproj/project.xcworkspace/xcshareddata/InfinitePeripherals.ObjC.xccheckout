@@ -10,31 +10,31 @@
 	<string>InfinitePeripherals.ObjC</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0BA0D50E-7E32-4577-81F7-C12B12051523</key>
-		<string>https://github.com/MercuryPay/InfinitePeriperals.ObjC.git</string>
+		<key>AEFB86967DDB3C2C10A301E877D6CBB74758698C</key>
+		<string>https://github.com/MercuryPay/InfinitePeriperals.All.ObjC.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>InfinitePeripherals.ObjC.xcodeproj/project.xcworkspace</string>
+	<string>InfinitePeripherals.ObjC.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0BA0D50E-7E32-4577-81F7-C12B12051523</key>
+		<key>AEFB86967DDB3C2C10A301E877D6CBB74758698C</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/MercuryPay/InfinitePeriperals.ObjC.git</string>
+	<string>https://github.com/MercuryPay/InfinitePeriperals.All.ObjC.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0BA0D50E-7E32-4577-81F7-C12B12051523</string>
+	<string>AEFB86967DDB3C2C10A301E877D6CBB74758698C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0BA0D50E-7E32-4577-81F7-C12B12051523</string>
+			<string>AEFB86967DDB3C2C10A301E877D6CBB74758698C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>InfinitePeriperals</string>
+			<string>InfinitePeriperals.All.ObjC</string>
 		</dict>
 	</array>
 </dict>
