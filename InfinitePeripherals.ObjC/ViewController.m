@@ -300,15 +300,15 @@
 
 -          (void)handleTransactionResult:(NSDictionary *)result {
     
-    SEL updateStuffSelector = sel_registerName("updateStuff:");
+    SEL updateUISelector = sel_registerName("updateUI:");
     
-    [self performSelectorOnMainThread:updateStuffSelector withObject:result waitUntilDone:NO];
+    [self performSelectorOnMainThread:updateUISelector withObject:result waitUntilDone:NO];
     
 }
 
 
 
--(void)updateStuff:(NSDictionary *) result {
+-(void)updateUI:(NSDictionary *) result {
     
     NSMutableString *message = [NSMutableString new];
     

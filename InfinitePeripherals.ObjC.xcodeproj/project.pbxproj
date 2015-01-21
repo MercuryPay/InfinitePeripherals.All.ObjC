@@ -116,10 +116,10 @@
 		33D85F7D18511DF000934F7C /* InfinitePeripherals.ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				33D85FB71851210A00934F7C /* Images */,
 				C2AC40BC1A700BE800E40287 /* Library */,
 				33D85FC21851213500934F7C /* MercuryHelper.h */,
 				33D85FC31851213500934F7C /* MercuryHelper.m */,
-				33D85FB71851210A00934F7C /* Images */,
 				33D85F8618511DF000934F7C /* AppDelegate.h */,
 				33D85F8718511DF000934F7C /* AppDelegate.m */,
 				33D85F8918511DF000934F7C /* Main_iPhone.storyboard */,
