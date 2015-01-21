@@ -1,4 +1,4 @@
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/MercuryPay/InfinitePeriperals.All.ObjC/blob/master/InfinitePeripherals.ObjC/Images/IPC-IPAD-SCREEN-1.png "Screenshot of successful test card swipe")
 
 Infinite Peripherals
 ===================
