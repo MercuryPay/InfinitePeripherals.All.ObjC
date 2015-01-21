@@ -1,3 +1,5 @@
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
 Infinite Peripherals
 ===================
 This is a sample Xcode iOS application demonstrating the capture of an encrypted credit card swipe from Infinite Peripheral device and processing transactions to the MercuyPay Web Services platform.
