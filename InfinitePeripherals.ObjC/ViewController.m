@@ -298,7 +298,18 @@
     self.activityIndicator.hidden = YES;
 }
 
-- (void)handleTransactionResult:(NSDictionary *)result {
+-          (void)handleTransactionResult:(NSDictionary *)result {
+    
+    SEL updateStuffSelector = sel_registerName("updateStuff:");
+    
+    [self performSelectorOnMainThread:updateStuffSelector withObject:result waitUntilDone:NO];
+    
+}
+
+
+
+-(void)updateStuff:(NSDictionary *) result {
+    
     NSMutableString *message = [NSMutableString new];
     
     for (NSString *key in [result allKeys])
@@ -319,5 +330,7 @@
     self.activityIndicator.hidden = YES;
     self.btnEmailResults.enabled = YES;
 }
+
+
 
 @end

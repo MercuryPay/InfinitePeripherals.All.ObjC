@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		338BA51E18ECB04400A65F4D /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 338BA51818ECAED800A65F4D /* libdtdev.a */; };
 		33D85F7818511DF000934F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7718511DF000934F7C /* Foundation.framework */; };
 		33D85F7A18511DF000934F7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7918511DF000934F7C /* CoreGraphics.framework */; };
 		33D85F7C18511DF000934F7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D85F7B18511DF000934F7C /* UIKit.framework */; };
@@ -26,12 +25,12 @@
 		33D85FC01851210A00934F7C /* requestText.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D85FBB1851210A00934F7C /* requestText.png */; };
 		33D85FC11851210A00934F7C /* responseText.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D85FBC1851210A00934F7C /* responseText.png */; };
 		33D85FC41851213500934F7C /* MercuryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D85FC31851213500934F7C /* MercuryHelper.m */; };
+		C2AC40C21A700BE800E40287 /* DTDevices.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C2AC40BE1A700BE800E40287 /* DTDevices.pdf */; };
+		C2AC40C31A700BE800E40287 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AC40C11A700BE800E40287 /* libdtdev.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3373B2EC18ECADC50071E37A /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdtdev.a; path = "../archivedXcodeProjects/IPC/DTDevices-iOS_2013-10-29_v1.82_Universal_XCode5/Library/libdtdev.a"; sourceTree = "<group>"; };
-		338BA51618ECAED800A65F4D /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
-		338BA51818ECAED800A65F4D /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 		33D85F7418511DF000934F7C /* InfinitePeripherals.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePeripherals.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D85F7718511DF000934F7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33D85F7918511DF000934F7C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,6 +56,11 @@
 		33D85FBC1851210A00934F7C /* responseText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = responseText.png; sourceTree = "<group>"; };
 		33D85FC21851213500934F7C /* MercuryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryHelper.h; sourceTree = "<group>"; };
 		33D85FC31851213500934F7C /* MercuryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryHelper.m; sourceTree = "<group>"; };
+		C2AC40BD1A700BE800E40287 /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		C2AC40BE1A700BE800E40287 /* DTDevices.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DTDevices.pdf; sourceTree = "<group>"; };
+		C2AC40BF1A700BE800E40287 /* EMVPrivateTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVPrivateTags.h; sourceTree = "<group>"; };
+		C2AC40C01A700BE800E40287 /* EMVTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTags.h; sourceTree = "<group>"; };
+		C2AC40C11A700BE800E40287 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,27 +68,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338BA51E18ECB04400A65F4D /* libdtdev.a in Frameworks */,
 				33D85FB61851209D00934F7C /* MessageUI.framework in Frameworks */,
 				33D85FB41851209600934F7C /* ExternalAccessory.framework in Frameworks */,
 				33D85F7A18511DF000934F7C /* CoreGraphics.framework in Frameworks */,
 				33D85F7C18511DF000934F7C /* UIKit.framework in Frameworks */,
 				33D85F7818511DF000934F7C /* Foundation.framework in Frameworks */,
+				C2AC40C31A700BE800E40287 /* libdtdev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		338BA51518ECAED800A65F4D /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				338BA51618ECAED800A65F4D /* DTDevices.h */,
-				338BA51818ECAED800A65F4D /* libdtdev.a */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		33D85F6B18511DF000934F7C = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +114,7 @@
 		33D85F7D18511DF000934F7C /* InfinitePeripherals.ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				338BA51518ECAED800A65F4D /* Library */,
+				C2AC40BC1A700BE800E40287 /* Library */,
 				33D85FC21851213500934F7C /* MercuryHelper.h */,
 				33D85FC31851213500934F7C /* MercuryHelper.m */,
 				33D85FB71851210A00934F7C /* Images */,
@@ -156,6 +151,18 @@
 				33D85FBC1851210A00934F7C /* responseText.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		C2AC40BC1A700BE800E40287 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				C2AC40BD1A700BE800E40287 /* DTDevices.h */,
+				C2AC40BE1A700BE800E40287 /* DTDevices.pdf */,
+				C2AC40BF1A700BE800E40287 /* EMVPrivateTags.h */,
+				C2AC40C01A700BE800E40287 /* EMVTags.h */,
+				C2AC40C11A700BE800E40287 /* libdtdev.a */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +223,7 @@
 				33D85FBF1851210A00934F7C /* logo~ipad.png in Resources */,
 				33D85FBD1851210A00934F7C /* logo@2x~ipad.png in Resources */,
 				33D85F9318511DF000934F7C /* Images.xcassets in Resources */,
+				C2AC40C21A700BE800E40287 /* DTDevices.pdf in Resources */,
 				33D85FC11851210A00934F7C /* responseText.png in Resources */,
 				33D85F8B18511DF000934F7C /* Main_iPhone.storyboard in Resources */,
 				33D85F8218511DF000934F7C /* InfoPlist.strings in Resources */,

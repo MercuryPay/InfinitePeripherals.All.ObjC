@@ -11,27 +11,18 @@
 @implementation MercuryHelper
 
 // Change this URL when runing transactions against production web service
+static NSString *const MERCURY_WEB_SERVICE_URL = @"https://w1.mercurydev.net/ws/ws.asmx";
 
-
-int                 _numberOfPasses = 0;
+static int          _numberOfPasses = 0;
 NSMutableData       *_conWebData;
 NSMutableString     *_soapResults;
 NSString            *_TransactionResult;
 NSMutableDictionary *_dict;
 NSString            *_currentElement;
 NSXMLParser         *_xmlParser;
-BOOL                _recordResults = NO;
+static BOOL         _recordResults = NO;
 NSMutableString     *_transactionType;
 NSString            *_noCaps;
-
-- (id) init {
-    self = [super init];
-    if (self) {
-        self.platform = [NSMutableString stringWithString:@"https://w1.mercurydev.net/ws/ws.asmx"];
-    }
-    
-    return self;
-}
 
 -(void) transctionFromDictionary:(NSDictionary *)dictionary andPassword:(NSString *)password {
     
@@ -47,7 +38,7 @@ NSString            *_noCaps;
     }
     
     NSString *soapMessage = [self buildSoapMessageFromDictionary:dictionary andPassword:password];
-    NSURL *url = [NSURL URLWithString:self.platform];
+    NSURL *url = [NSURL URLWithString:MERCURY_WEB_SERVICE_URL];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
     
@@ -135,7 +126,7 @@ NSString            *_noCaps;
 {
     if (_numberOfPasses == 1)
     {
-       NSString *transactionResult = [NSString stringWithFormat:@"%@Result", _transactionType];
+        NSString *transactionResult = [NSString stringWithFormat:@"%@Result", _transactionType];
         
         if( [elementName isEqualToString:transactionResult])
         {
@@ -182,7 +173,7 @@ NSString            *_noCaps;
             _TransactionResult = _soapResults;
             _TransactionResult = [_TransactionResult stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
             _TransactionResult = [_TransactionResult stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
-
+            
             _recordResults = NO;
         }
     }
@@ -204,10 +195,14 @@ NSString            *_noCaps;
     if (_numberOfPasses == 1)
     {
         NSData *data = [_TransactionResult dataUsingEncoding:NSUTF8StringEncoding];
-        _xmlParser = [[NSXMLParser alloc] initWithData: data];
-        [_xmlParser setDelegate: self];
-        [_xmlParser setShouldResolveExternalEntities: YES];
-        [_xmlParser parse];
+        
+        dispatch_queue_t reentrantAvoidanceQueue = dispatch_queue_create("reentrantAvoidanceQueue", DISPATCH_QUEUE_SERIAL);
+        dispatch_async(reentrantAvoidanceQueue, ^{
+            _xmlParser = [[NSXMLParser alloc] initWithData:data];
+            [_xmlParser setDelegate:self];
+            [_xmlParser parse];
+        });
+        dispatch_sync(reentrantAvoidanceQueue, ^{ });
     }
     else
     {
