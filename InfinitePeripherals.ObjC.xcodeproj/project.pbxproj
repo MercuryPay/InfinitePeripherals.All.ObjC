@@ -27,6 +27,7 @@
 		33D85FC41851213500934F7C /* MercuryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D85FC31851213500934F7C /* MercuryHelper.m */; };
 		C2AC40C21A700BE800E40287 /* DTDevices.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C2AC40BE1A700BE800E40287 /* DTDevices.pdf */; };
 		C2AC40C31A700BE800E40287 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AC40C11A700BE800E40287 /* libdtdev.a */; };
+		C2AC40C51A70119900E40287 /* IPC-IPAD-SCREEN-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AC40C41A70119900E40287 /* IPC-IPAD-SCREEN-1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		C2AC40BF1A700BE800E40287 /* EMVPrivateTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVPrivateTags.h; sourceTree = "<group>"; };
 		C2AC40C01A700BE800E40287 /* EMVTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTags.h; sourceTree = "<group>"; };
 		C2AC40C11A700BE800E40287 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
+		C2AC40C41A70119900E40287 /* IPC-IPAD-SCREEN-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IPC-IPAD-SCREEN-1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		33D85FB71851210A00934F7C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2AC40C41A70119900E40287 /* IPC-IPAD-SCREEN-1.png */,
 				33D85FB81851210A00934F7C /* logo@2x~ipad.png */,
 				33D85FB91851210A00934F7C /* logo@2x~iphone.png */,
 				33D85FBA1851210A00934F7C /* logo~ipad.png */,
@@ -220,6 +223,7 @@
 				33D85FC01851210A00934F7C /* requestText.png in Resources */,
 				33D85F8E18511DF000934F7C /* Main_iPad.storyboard in Resources */,
 				33D85FBE1851210A00934F7C /* logo@2x~iphone.png in Resources */,
+				C2AC40C51A70119900E40287 /* IPC-IPAD-SCREEN-1.png in Resources */,
 				33D85FBF1851210A00934F7C /* logo~ipad.png in Resources */,
 				33D85FBD1851210A00934F7C /* logo@2x~ipad.png in Resources */,
 				33D85F9318511DF000934F7C /* Images.xcassets in Resources */,
