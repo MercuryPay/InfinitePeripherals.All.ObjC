@@ -1,3 +1,9 @@
+
+<a href="https://developer.vantiv.com/?utm_campaign=githubcta&utm_medium=hyperlink&utm_source=github&utm_content=gotquestions">Got questions? Connect with our experts on Vantiv ONE.</a>
+
+<a href="https://developer.vantiv.com/?utm_campaign=githubcta&utm_medium=hyperlink&utm_source=github&utm_content=codingforcommerce">Are you coding for commerce? Connect with our experts on Vantiv ONE.</a>
+
+
 ![alt text](https://github.com/MercuryPay/InfinitePeriperals.All.ObjC/blob/master/InfinitePeripherals.ObjC/Images/IPC-IPAD-SCREEN-1.png "Screenshot of successful test card swipe")
 
 Infinite Peripherals
@@ -6,12 +12,12 @@ This is a sample Xcode iOS application demonstrating the capture of an encrypted
 ***
 **PREREQUISITE:** Infinite Peripherals has a developer portal at http://ipcprint.com/developer/  There is an NDA registration procedure in place as a part of the Infinite Peripherals Development Portal Registration Process.  Once approved, you will have access to SDKs.  
 ***
-##Steps to Capture Secure Card Data from <br>Infinite Peripherals Encrypted Swipers
+## Steps to Capture Secure Card Data from <br>Infinite Peripherals Encrypted Swipers
 
-###Step 1: Add Infinite Peripheral library (see prerequisite above)
+### Step 1: Add Infinite Peripheral library (see prerequisite above)
 Add `DTDevices.h` and `libtdev.a` to your project
 
-###Step 2: Modify .plist file
+### Step 2: Modify .plist file
 `com.datecs.linea.pro.msr`
 `com.datecs.linea.pro.bar`
 
@@ -23,7 +29,7 @@ Add `DTDevices.h` and `libtdev.a` to your project
 	</array>
 ```
 
-###Step 3: Initilize a new `dtdev` instance
+### Step 3: Initilize a new `dtdev` instance
 
 ```Objective-C
 self.dtdev = [DTDevices sharedDevice];
@@ -31,7 +37,7 @@ self.dtdev = [DTDevices sharedDevice];
 [self.dtdev connect];
 ```
 
-###Step 4: Implement updateConnectionState:(int)state method
+### Step 4: Implement updateConnectionState:(int)state method
 
 ```Objective-C
 - (void)updateConnectionState:(int)state {
@@ -54,7 +60,7 @@ self.dtdev = [DTDevices sharedDevice];
 }
 ```
 
-###Step 5: Implement magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3
+### Step 5: Implement magneticCardEncryptedData:(int)encryption tracks:(int)tracks data:(NSData *)data track1masked:(NSString *)track1masked track2masked:(NSString *)track2masked track3:(NSString *)track3
 
 ```Objective-C
 //notification when card is read
@@ -178,7 +184,7 @@ self.dtdev = [DTDevices sharedDevice];
 }
 ```
 ----------------
-######© 2014 Mercury Payment Systems, LLC - all rights reserved.
+###### © 2014 Mercury Payment Systems, LLC - all rights reserved.
 This software and all specifications and documentation contained herein or provided to you hereunder (the "Software") are provided free of charge strictly on an "AS IS" basis. No representations or warranties are expressed or implied, including, but not limited to, warranties of suitability, quality, merchantability, or fitness for a particular purpose (irrespective of any course of dealing, custom or usage of trade), and all such warranties are expressly and specifically disclaimed. Mercury Payment Systems shall have no liability or responsibility to you nor any other person or entity with respect to any liability, loss, or damage, including lost profits whether foreseeable or not, or other obligation for any cause whatsoever, caused or alleged to be caused directly or indirectly by the Software. Use of the Software signifies agreement with this disclaimer notice.
 
 ![Analytics](https://ga-beacon.appspot.com/UA-60858025-18/InfinitePeripherals.All.ObjC/readme?pixel)
